@@ -1,29 +1,66 @@
-import java.util.ArrayList;
-
 /**
  * 
  */
 
 /**
- * @author 14108849
+ * @author Vinicius_B_Rosa
  *
  */
-public class Caixa implements iCaixa{
+public class Caixa {
 	
-	ArrayList<Cliente> clientes = new ArrayList<>();
+	private int id;
 	
-	ArrayList<Integer> caixas = new ArrayList<>(10);
-
-	@Override
-	public void cadastrarCliente(int id, int idade) {
-		// TODO Auto-generated method stub
-		
+	private Cliente cliente;
+	
+	private boolean ocupado;
+	
+	private boolean prioritario;
+	
+	public Caixa(int id, boolean prioritario){
+		this.id = id;
+		this.prioritario = prioritario;
 	}
 
-	@Override
-	public int proximoCliente() {
-		// TODO Auto-generated method stub
-		return 0;
+	public Cliente getCliente() {
+		return cliente;
 	}
 
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+	
+	public boolean getprioritario() {
+		return prioritario;
+	}
+
+	public boolean isOcupado() {
+		if(cliente == null) {
+			return false;
+		}
+		return true;
+	}
+
+	public boolean atender(Cliente cliente) {
+		if(ocupado) {
+			return false;
+		}		
+		this.cliente = cliente;
+		ocupado = true;		
+		return true;
+	}
+	
+	public Cliente terminarAtendimento(){
+		Cliente aux = cliente;
+		cliente = null;
+		ocupado = false;
+		return aux;
+	}
+	
+	public boolean isPrioritario(){
+		return prioritario;
+	}
 }

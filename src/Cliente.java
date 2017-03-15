@@ -8,24 +8,14 @@
  */
 public class Cliente {
 	
-	private int id;
-	
 	private int idade;
 	
 	private String nome;
 
-	public Cliente(int id, int idade) {
+	public Cliente(String nome, int idade) {
 		super();
-		this.id = id;
+		this.nome = nome;
 		this.idade = idade;
-	}
-
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
 	}
 
 	public int getIdade() {
