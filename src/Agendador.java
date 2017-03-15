@@ -1,4 +1,6 @@
 import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.Queue;
 import java.util.Stack;
 
 /**
@@ -11,17 +13,17 @@ import java.util.Stack;
  */
 public class Agendador implements iAgendador {
 
-	Stack<Cliente> clientes;
+	Queue<Cliente> clientes;
 
-	Stack<Cliente> clientesPrioritarios;
+	Queue<Cliente> clientesPrioritarios;
 
 	ArrayList<Caixa> caixas;
 
 	ArrayList<Caixa> caixasDisponiveis;
 
 	public Agendador() {
-		clientes = new Stack<>();
-		clientesPrioritarios = new Stack<>();
+		clientes = new LinkedList<>();
+		clientesPrioritarios = new LinkedList<>();
 
 		caixas = new ArrayList<>(10);
 		caixasDisponiveis = new ArrayList<>();
@@ -43,10 +45,10 @@ public class Agendador implements iAgendador {
 
 		Cliente aux = new Cliente(nome, idade);
 
-		clientes.push(aux);
+		clientes.add(aux);
 
 		if (prioritario) {
-			clientesPrioritarios.push(aux);
+			clientesPrioritarios.add(aux);
 		}
 	}
 
@@ -61,10 +63,10 @@ public class Agendador implements iAgendador {
 		Cliente cliente = null;
 
 		if (temPrioritarios) {
-			cliente = clientesPrioritarios.pop();
+			cliente = clientesPrioritarios.poll();
 			clientes.remove(cliente);
 		} else{
-			cliente = clientes.pop();
+			cliente = clientes.poll();
 		}
 		
 		caixa = this.primeiroCaixaDisponivel(temPrioritarios);
