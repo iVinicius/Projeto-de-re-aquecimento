@@ -27,7 +27,7 @@ public class Agendador implements iAgendador {
 		caixasDisponiveis = new ArrayList<>();
 		Caixa aux;
 		for (int i = 1; i <= 10; i++) {
-			if (i < 5) {
+			if (i <= 5) {
 				aux = new Caixa(i, true);
 			} else {
 				aux = new Caixa(i, false);
@@ -63,6 +63,8 @@ public class Agendador implements iAgendador {
 		if (temPrioritarios) {
 			cliente = clientesPrioritarios.pop();
 			clientes.remove(cliente);
+		} else{
+			cliente = clientes.pop();
 		}
 		
 		caixa = this.primeiroCaixaDisponivel(temPrioritarios);
@@ -78,16 +80,32 @@ public class Agendador implements iAgendador {
 			for (Caixa c : caixasDisponiveis) {
 				if (c.isPrioritario()) {
 					aux = c;
-					caixasDisponiveis.remove(c);
+					break;
 				}
 			}
+			caixasDisponiveis.remove(aux);
 		} else {
 			for (Caixa c : caixasDisponiveis) {
 				aux = c;
-				caixasDisponiveis.remove(c);
+				break;
 			}
-
+			caixasDisponiveis.remove(aux);
 		}
 		return aux;
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("Agendador [clientes=");
+		builder.append(clientes);
+		builder.append(", clientesPrioritarios=");
+		builder.append(clientesPrioritarios);
+		builder.append(", caixas=");
+		builder.append(caixas);
+		builder.append(", caixasDisponiveis=");
+		builder.append(caixasDisponiveis);
+		builder.append("]");
+		return builder.toString();
 	}
 }

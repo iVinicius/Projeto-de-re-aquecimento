@@ -34,4 +34,15 @@ public class Cliente {
 		this.nome = nome;
 	}
 
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("Cliente [idade=");
+		builder.append(idade);
+		builder.append(", nome=");
+		builder.append(nome);
+		builder.append("]");
+		return builder.toString();
+	}
+
 }

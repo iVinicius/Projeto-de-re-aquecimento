@@ -63,4 +63,20 @@ public class Caixa {
 	public boolean isPrioritario(){
 		return prioritario;
 	}
+
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("Caixa [id=");
+		builder.append(id);
+		builder.append(", cliente=");
+		builder.append(cliente);
+		builder.append(", ocupado=");
+		builder.append(ocupado);
+		builder.append(", prioritario=");
+		builder.append(prioritario);
+		builder.append("]");
+		return builder.toString();
+	}
+	
 }
