@@ -1,7 +1,7 @@
+package source;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Queue;
-import java.util.Stack;
 
 /**
  * 
@@ -49,6 +49,16 @@ public class Agendador implements iAgendador {
 
 		if (prioritario) {
 			clientesPrioritarios.add(aux);
+		}
+	}
+	
+	public void cadastrarCliente(Cliente cliente) {
+		boolean prioritario = cliente.getIdade() >= 65 ? true : false;
+
+		clientes.add(cliente);
+
+		if (prioritario) {
+			clientesPrioritarios.add(cliente);
 		}
 	}
 

@@ -1,3 +1,4 @@
+package source;
 /**
  * 
  */
@@ -20,7 +21,13 @@ public class Console {
 		
 		agendador.cadastrarCliente("Luska", 65);
 		
+		agendador.cadastrarCliente("Chassotera", 13);
+		
 		String xx = agendador.proximoCliente();
+		
+		System.out.println(xx);
+		
+		xx = agendador.proximoCliente();
 		
 		System.out.println(xx);
 		
